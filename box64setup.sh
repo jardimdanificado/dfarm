@@ -2,10 +2,11 @@ sudo apt install git build-essential cmake
 git clone https://github.com/ptitSeb/box64.git
 cd box64
 mkdir build
-cmake -DRPI4ARM64=1 -DCMAKE_BUILD_TYPE=RelWithDebInfo
-make -j4
+cdbuild
+cmake .. -DARM_DYNAREC=ON
+make
 sudo make install
 systemctl restart systemd-binfmt
 box64 --version
-printf REBOOT-THE-CHROOT-MANUALLY
+printf REBOOT-THE-SYSTEM-MANUALLY
 
